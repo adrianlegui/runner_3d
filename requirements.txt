@@ -1,0 +1,4 @@
+commitizen
+Babel-Godot
+Babel
+gdtoolkit==4.*
