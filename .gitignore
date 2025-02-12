@@ -44,15 +44,12 @@ build/*
 addons/*
 !addons/gd-plug
 !addons/mixamo_animations
-!addons/dungeon_crawl_stone_soup
 
 *.blend[0-9]*
 
 .venv/*
 
 .plugged/*
-
-script_templates/*
 
 android/*
 !android/.build_version
