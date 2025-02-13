@@ -1,5 +1,8 @@
-# .github/workflows/issue-on-push.yml
-on: [push]
+# .github/workflows/issue-on-push.ym
+on:
+  push:
+    paths:
+      - issues.md
 name: Create an issue on push
 permissions:
   contents: read
@@ -12,4 +15,6 @@ jobs:
       - uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          filename: issues.md
           
