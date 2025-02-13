@@ -1,6 +1,6 @@
 ---
-title: crear entidad Cell
+title: crear entidad map
 assignees: adrianlegui
 labels: enhancement
 ---
-Tiene que heredar de Entity. Similar al grimap pero con escenas.
+Tiene que heredar de Entity.
