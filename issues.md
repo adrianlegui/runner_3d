@@ -1,7 +1,7 @@
 ---
-title: actualizar ModManager a la ultima versión
+title: agregar celdas a MapSmokeTests
 assignees: adrianlegui
 labels: enhancement
 milestone: "0.1"
 ---
-configurar ModManager a la version v0.10.0
+agregar 2 celdas una donde el jugador comienza y otra donde el jugador tiene que llegar.
