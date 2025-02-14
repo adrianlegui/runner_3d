@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhgjh3u4567fv"]
+
+[ext_resource type="Script" path="res://src/runner_3d/gd/cell/cell.gd" id="1_f36tu"]
+[ext_resource type="Script" path="res://addons/mod_manager/src/data/entity_reference.gd" id="2_ynd5r"]
+
+[node name="Cell" type="Node" node_paths=PackedStringArray("_map_ref")]
+script = ExtResource("1_f36tu")
+_map_ref = NodePath("MapRef")
+
+[node name="MapRef" type="Node" parent="."]
+script = ExtResource("2_ynd5r")
+_persistent_entity_id = false
