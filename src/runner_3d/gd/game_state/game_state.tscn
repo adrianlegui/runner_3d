@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://addons/mod_manager/src/data/entity_reference.gd" id="2_lrrt7"]
 
 [node name="GameState" type="Node" node_paths=PackedStringArray("_player_ref", "_map_ref", "_cell_ref")]
+process_mode = 4
 script = ExtResource("1_xfnbr")
 _player_ref = NodePath("PlayerRef")
 _map_ref = NodePath("MapRef")
