@@ -9,7 +9,13 @@ func _plugging():
 			"exclude": ["addons/gdUnit4/test"]
 		}
 	)
-	plug("ramokz/phantom-camera", {"tag": "v0.8.2.2"}	)
+	plug(
+		"ramokz/phantom-camera",
+		{
+			"tag": "v0.8.2.2",
+			"exclude": ["addons/phantom_camera/examples"]
+		},
+	)
 	plug("MarcoFazioRandom/Virtual-Joystick-Godot")
 	plug(
 		"git@gitlab.com:adrian.luis.leguizamon/mod_manager.git",

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj0mn68s7kdlq"]
+
+[ext_resource type="PackedScene" uid="uid://b6x7p5q33l5lc" path="res://src/runner_3d/gd/one_shot/start_game/start_game.tscn" id="1_egrbo"]
+
+[node name="StartGame" instance=ExtResource("1_egrbo")]
