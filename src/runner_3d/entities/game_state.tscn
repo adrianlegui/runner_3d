@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjdjwt7w18386"]
+
+[ext_resource type="PackedScene" uid="uid://cmqw3f5u03nql" path="res://src/runner_3d/gd/game_state/game_state.tscn" id="1_twxdh"]
+
+[node name="GameState" instance=ExtResource("1_twxdh")]
