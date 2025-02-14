@@ -1,7 +1,7 @@
 ---
-title: agregar entidad Camera
+title: actualizar entidad GameState
 assignees: adrianlegui
 labels: enhancement
 milestone: "0.1"
 ---
-tiene que heredar de Entity, cuando es habilitada tiene que instanciar una camara 3d y una PhantomCamera3D
+tiene que utilizar entidades Cell, Map, y Character
