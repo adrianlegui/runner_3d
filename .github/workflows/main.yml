@@ -16,6 +16,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          milestone: 0.1
+          milestone: 1
           filename: issues.md
           
