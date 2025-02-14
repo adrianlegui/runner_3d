@@ -1,7 +1,7 @@
 ---
-title: agregar escena visual a entidad Player
+title: agregar entidad Camera
 assignees: adrianlegui
 labels: enhancement
 milestone: "0.1"
 ---
-Tiene que tener esqueleto, malla y animaciones para caminar, correr y correr a maxima velocidad. Utilizar mixamo y makehuman.
+tiene que heredar de Entity, cuando es habilitada tiene que instanciar una camara 3d y una PhantomCamera3D
