@@ -1,6 +1,7 @@
 ---
-title: crear entidad StartGame
+title: agregar escena visual a entidad Player
 assignees: adrianlegui
 labels: enhancement
+milestone: 0.1
 ---
-Tiene que heredar de Entity. Al iniciar la partida por primera vez tiene que configurar mapa, celda, y player.
+Tiene que tener esqueleto, malla y animaciones para caminar, correr y correr a maxima velocidad.
