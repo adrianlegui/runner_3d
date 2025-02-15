@@ -1,12 +1,12 @@
 # GdUnit generated TestSuite
 class_name CharacterTest
 extends GdUnitTestSuite
-@warning_ignore('unused_parameter')
-@warning_ignore('return_value_discarded')
+@warning_ignore("unused_parameter")
+@warning_ignore("return_value_discarded")
 
 # TestSuite generated from
-const __source = 'res://src/runner_3d/gd/character/character.gd'
-const CHARACTER = preload("res://src/runner_3d/gd/character/Character.tscn")
+const __source = "res://src/runner_3d/gd/character/character.gd"
+const CHARACTER = preload("res://src/runner_3d/gd/character/character.tscn")
 const CELL = preload("res://src/runner_3d/gd/cell/cell.tscn")
 const V_APPROX: Vector3 = Vector3(0.00001, 0.00001, 0.00001)
 
@@ -78,14 +78,14 @@ func test__disconnect_cell_signals() -> void:
 
 
 func test__on_enabled_changed_show() -> void:
-	var mock_cell_ref: = mock(EntityReference) as EntityReference
+	var mock_cell_ref := mock(EntityReference) as EntityReference
 	var cell: Cell = auto_free(CELL.instantiate()) as Cell
 	ModManager.add_entity(cell)
 	cell.set_enabled(true)
 	var character: Character = auto_free(CHARACTER.instantiate()) as Character
 	ModManager.add_entity(character)
 	character.set_cell(cell)
-	var c_spy: = spy(character) as Character
+	var c_spy := spy(character) as Character
 	c_spy._cell_ref = mock_cell_ref
 	do_return(cell).on(mock_cell_ref).get_reference()
 	c_spy._on_enabled_changed()
@@ -93,14 +93,14 @@ func test__on_enabled_changed_show() -> void:
 
 
 func test__on_enabled_changed_hide() -> void:
-	var mock_cell_ref: = mock(EntityReference) as EntityReference
+	var mock_cell_ref := mock(EntityReference) as EntityReference
 	var cell: Cell = auto_free(CELL.instantiate()) as Cell
 	ModManager.add_entity(cell)
 	cell.set_enabled(false)
 	var character: Character = auto_free(CHARACTER.instantiate()) as Character
 	ModManager.add_entity(character)
 	character.set_cell(cell)
-	var c_spy: = spy(character) as Character
+	var c_spy := spy(character) as Character
 	c_spy._cell_ref = mock_cell_ref
 	do_return(cell).on(mock_cell_ref).get_reference()
 	c_spy._on_enabled_changed()

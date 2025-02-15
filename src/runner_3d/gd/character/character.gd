@@ -39,9 +39,7 @@ func get_transform_3d() -> Transform3D:
 
 
 func _add_extra_persistent_properties(persistent_properties: PackedStringArray) -> void:
-	persistent_properties.append_array(
-		["_transform_3d", "_cell_ref"]
-	)
+	persistent_properties.append_array(["_transform_3d", "_cell_ref"])
 
 
 func _connect_cell_signals() -> void:
