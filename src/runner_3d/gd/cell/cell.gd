@@ -1,11 +1,9 @@
-class_name Cell extends Entity
+class_name Cell extends EnableableEntity
 
 @export var _map_ref: EntityReference
 @export var _grid_x: int = 0
 @export var _grid_y: int = 0
 @export var _grid_z: int = 0
-
-var _enabled: bool = false
 
 func set_grid_x(x: int) -> void:
 	_grid_x = x
@@ -31,23 +29,12 @@ func get_grid_z() -> int:
 	return _grid_z
 
 
-func set_map(map: Entity) -> void:
-	_map_ref.set_entity_id(map.name)
+func set_map(map: Map) -> void:
+	_map_ref.set_entity(map)
 
 
-func get_map() -> Entity:
+func get_map() -> Map:
 	return _map_ref.get_reference()
-
-
-func set_enabled(enabled: bool) -> void:
-	if enabled == _enabled:
-		return
-
-	_enabled = enabled
-
-
-func is_enabled() -> bool:
-	return _enabled
 
 
 func _add_extra_persistent_properties(
@@ -56,7 +43,6 @@ func _add_extra_persistent_properties(
 	persistent_properties.append_array(
 		[
 			"_map_ref",
-			"_enabled",
 			"_grid_x",
 			"_grid_y",
 			"_grid_z"

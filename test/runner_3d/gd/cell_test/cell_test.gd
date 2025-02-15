@@ -18,26 +18,11 @@ func test__add_extra_persistent_properties() -> void:
 	).contains(
 		[
 			"_map_ref",
-			"_enabled",
 			"_grid_x",
 			"_grid_y",
 			"_grid_z"
 		]
 	)
-
-
-func test_is_enabled() -> void:
-	var c: Cell = auto_free(CELL.instantiate()) as Cell
-	assert_bool(c.is_enabled()).is_false()
-
-
-func test_set_enabled() -> void:
-	var cell = auto_free(CELL.instantiate()) as Cell
-	ModManager.add_entity(cell)
-	cell.set_enabled(true)
-	assert_bool(cell.is_enabled()).is_true()
-	cell.set_enabled(false)
-	assert_bool(cell.is_enabled()).is_false()
 
 
 func test_get_map() -> void:
@@ -49,7 +34,7 @@ func test_get_map() -> void:
 func test_set_map() -> void:
 	var cell = auto_free(CELL.instantiate()) as Cell
 	ModManager.add_entity(cell)
-	var map: Entity = auto_free(Entity.new())
+	var map: Map = auto_free(Map.new()) as Map
 	ModManager.add_entity(map)
 	cell.set_map(map)
 	assert_object(cell.get_map()).is_same(map)
