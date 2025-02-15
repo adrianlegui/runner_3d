@@ -1,11 +1,11 @@
 # GdUnit generated TestSuite
 class_name LocationTest
 extends GdUnitTestSuite
-@warning_ignore('unused_parameter')
-@warning_ignore('return_value_discarded')
+@warning_ignore("unused_parameter")
+@warning_ignore("return_value_discarded")
 
 # TestSuite generated from
-const __source = 'res://src/runner_3d/gd/location/location.gd'
+const __source = "res://src/runner_3d/gd/location/location.gd"
 const VECTOR_APPROX: Vector3 = Vector3(0.000001, 0.000001, 0.000001)
 
 
@@ -40,7 +40,7 @@ func test_get_cell() -> void:
 func test_set_cell() -> void:
 	var location: Location = auto_free(Location.new()) as Location
 	var cell: Cell = auto_free(Cell.new()) as Cell
-	var cell_ref_spy: = spy(auto_free(EntityReference.new())) as EntityReference
+	var cell_ref_spy := spy(auto_free(EntityReference.new())) as EntityReference
 	location._cell_ref = cell_ref_spy
 	location.set_cell(cell)
 	verify(cell_ref_spy, 1).set_entity(cell)
