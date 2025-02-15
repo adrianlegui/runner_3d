@@ -1,7 +1,7 @@
 ---
-title: agregar configuracion para gdformat
+title: actualizar estilo del código
 assignees: adrianlegui
 labels: enhancement
 milestone: "0.1"
 ---
-Tiene que procesar los directorios src y test, todos los demas directorios tiene que ser ignorados.
+El código tiene que estar formateado por gdformat.
