@@ -1,7 +1,7 @@
 ---
-title: actualizar Cell y Map
+title: agregar configuracion para gdformat
 assignees: adrianlegui
 labels: enhancement
 milestone: "0.1"
 ---
-Tienen que heredar de EnableableEntity
+Tiene que procesar los directorios src y test, todos los demas directorios tiene que ser ignorados.
