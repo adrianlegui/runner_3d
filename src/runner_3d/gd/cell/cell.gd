@@ -5,6 +5,7 @@ class_name Cell extends EnableableEntity
 @export var _grid_y: int = 0
 @export var _grid_z: int = 0
 
+
 func set_grid_x(x: int) -> void:
 	_grid_x = x
 
@@ -37,14 +38,5 @@ func get_map() -> Map:
 	return _map_ref.get_reference()
 
 
-func _add_extra_persistent_properties(
-	persistent_properties: PackedStringArray
-) -> void:
-	persistent_properties.append_array(
-		[
-			"_map_ref",
-			"_grid_x",
-			"_grid_y",
-			"_grid_z"
-		]
-	)
+func _add_extra_persistent_properties(persistent_properties: PackedStringArray) -> void:
+	persistent_properties.append_array(["_map_ref", "_grid_x", "_grid_y", "_grid_z"])
