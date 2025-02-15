@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxudr8vv83jrg"]
+
+[ext_resource type="Script" path="res://src/runner_3d/gd/character/character.gd" id="1_u17yk"]
+[ext_resource type="Script" path="res://addons/mod_manager/src/data/entity_reference.gd" id="2_a81gn"]
+
+[node name="Character" type="Node" node_paths=PackedStringArray("_cell_ref")]
+script = ExtResource("1_u17yk")
+_cell_ref = NodePath("CellRef")
+
+[node name="CellRef" type="Node" parent="."]
+script = ExtResource("2_a81gn")
