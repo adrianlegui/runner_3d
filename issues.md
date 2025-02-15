@@ -1,7 +1,7 @@
 ---
-title: crear README.md
+title: actualizar Cell y Map
 assignees: adrianlegui
 labels: enhancement
 milestone: "0.1"
 ---
-Tiene que tener titulo y descripción.
+Tienen que heredar de EnableableEntity
