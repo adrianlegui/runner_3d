@@ -1,7 +1,7 @@
 ---
-title: actualizar estilo del código
+title: agregar test a runner_3d
 assignees: adrianlegui
 labels: enhancement
 milestone: "0.1"
 ---
-El código tiene que estar formateado por gdformat.
+Tiene que comprobar si src/runner_3d/mods/runner_3d.cfg es válido.
