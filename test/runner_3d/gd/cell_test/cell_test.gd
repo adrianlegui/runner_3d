@@ -1,28 +1,20 @@
 # GdUnit generated TestSuite
 class_name CellTest
 extends GdUnitTestSuite
-@warning_ignore('unused_parameter')
-@warning_ignore('return_value_discarded')
+@warning_ignore("unused_parameter")
+@warning_ignore("return_value_discarded")
 
 # TestSuite generated from
-const __source = 'res://src/runner_3d/gd/cell/cell.gd'
+const __source = "res://src/runner_3d/gd/cell/cell.gd"
 const CELL = preload("res://src/runner_3d/gd/cell/cell.tscn")
+
 
 func test__add_extra_persistent_properties() -> void:
 	var cell = auto_free(CELL.instantiate()) as Cell
 	ModManager.add_entity(cell)
 	var props: PackedStringArray = []
 	cell._add_extra_persistent_properties(props)
-	assert_array(
-		props
-	).contains(
-		[
-			"_map_ref",
-			"_grid_x",
-			"_grid_y",
-			"_grid_z"
-		]
-	)
+	assert_array(props).contains(["_map_ref", "_grid_x", "_grid_y", "_grid_z"])
 
 
 func test_get_map() -> void:

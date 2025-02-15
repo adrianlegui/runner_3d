@@ -4,6 +4,7 @@ class_name GameState extends Entity
 @export var _map_ref: EntityReference
 @export var _cell_ref: EntityReference
 
+
 func get_current_map() -> Entity:
 	return _map_ref.get_reference()
 
@@ -28,13 +29,5 @@ func set_current_cell(cell: Entity) -> void:
 	_cell_ref.set_entity_id(cell.name)
 
 
-func _add_extra_persistent_properties(
-	persistent_properties: PackedStringArray
-) -> void:
-	persistent_properties.append_array(
-		[
-			"_cell_ref",
-			"_map_ref",
-			"_player_ref"
-		]
-	)
+func _add_extra_persistent_properties(persistent_properties: PackedStringArray) -> void:
+	persistent_properties.append_array(["_cell_ref", "_map_ref", "_player_ref"])
