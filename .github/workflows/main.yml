@@ -1,6 +1,8 @@
 # .github/workflows/issue-on-push.ym
 on:
   push:
+    branches:
+      - main
     paths:
       - issues.md
 name: Create an issue on push
@@ -18,4 +20,6 @@ jobs:
         with:
           milestone: 1
           filename: issues.md
+          update_existing: false
+          search_existing: all
           
