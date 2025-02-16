@@ -1,62 +1,53 @@
 class_name Character extends EnableableEntity
 
-@export var _cell_ref: EntityReference
+@export var _location: Location
 
-var _transform_3d: Transform3D = Transform3D.IDENTITY
+
+func set_forward(forward: Vector3) -> void:
+	_location.set_forward(forward)
+
+
+func get_forward() -> Vector3:
+	return _location.get_forward()
 
 
 func get_position() -> Vector3:
-	return _transform_3d.origin
+	return _location.get_position()
 
 
 func set_position(position: Vector3) -> void:
-	_transform_3d.origin = position
+	_location.set_position(position)
 
 
 func get_cell() -> Cell:
-	return _cell_ref.get_reference()
+	return _location.get_cell()
 
 
 func set_cell(cell: Cell) -> void:
-	if cell == get_cell():
-		return
-
-	_disconnect_cell_signals()
-
-	if cell == null:
-		_cell_ref.set_entity_id("")
-	else:
-		_cell_ref.set_entity(cell)
-		_connect_cell_signals()
+	_location.set_cell(cell)
 
 
 func set_transform_3d(transform_3d: Transform3D) -> void:
-	_transform_3d = transform_3d
+	_location.set_transform_3d(transform_3d)
 
 
 func get_transform_3d() -> Transform3D:
-	return _transform_3d
+	return _location.get_transform_3d()
 
 
 func _add_extra_persistent_properties(persistent_properties: PackedStringArray) -> void:
-	persistent_properties.append_array(["_transform_3d", "_cell_ref"])
+	persistent_properties.append_array(["_location"])
 
 
-func _connect_cell_signals() -> void:
-	var cell: Cell = get_cell()
-	if cell == null:
-		return
-	cell.enabled_changed.connect(_on_cell_enabled_changed)
+func _show() -> void:
+	pass
 
 
-func _disconnect_cell_signals() -> void:
-	var cell: Cell = get_cell()
-	if cell == null:
-		return
-	cell.enabled_changed.disconnect(_on_cell_enabled_changed)
+func _hide() -> void:
+	pass
 
 
-func _on_cell_enabled_changed() -> void:
+func _on_location_cell_enabled_changed() -> void:
 	var cell: Cell = get_cell()
 	if cell == null:
 		return
@@ -71,11 +62,3 @@ func _on_enabled_changed() -> void:
 		_show()
 	else:
 		_hide()
-
-
-func _show() -> void:
-	pass
-
-
-func _hide() -> void:
-	pass
