@@ -117,3 +117,23 @@ func test__on_location_cell_enabled_changed() -> void:
 	do_return(true).on(cell).is_enabled()
 	character._on_location_cell_enabled_changed()
 	assert_bool(character.is_enabled()).is_true()
+
+
+func test_move_to_spawn_point() -> void:
+	var spawn_point: SpawnPoint = mock(SpawnPoint) as SpawnPoint
+	var location: Location = spy(auto_free(Location.new())) as Location
+	var cell_ref: EntityReference = mock(EntityReference) as EntityReference
+	location._cell_ref = cell_ref
+	var character: Character = spy(auto_free(Character.new())) as Character
+	character._location = location
+	var t: Transform3D = Transform3D.IDENTITY
+	var cell: Cell = mock(Cell) as Cell
+	do_return(cell).on(spawn_point).get_cell()
+	do_return(t).on(spawn_point).get_transform_3d()
+	var enabled: bool = true
+	do_return(enabled).on(cell).is_enabled()
+
+	character.move_to_spawn_point(spawn_point)
+	verify(character, 1).set_transform_3d(t)
+	verify(character, 1).set_cell(cell)
+	verify(character, 1).set_enabled(enabled)

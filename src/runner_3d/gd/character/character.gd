@@ -2,6 +2,15 @@ class_name Character extends EnableableEntity
 
 @export var _location: Location
 
+@onready var _scene_tree: SceneTree = get_tree()
+
+
+func move_to_spawn_point(spawn_point: SpawnPoint) -> void:
+	set_transform_3d(spawn_point.get_transform_3d())
+	var cell: Cell = spawn_point.get_cell()
+	set_cell(cell)
+	set_enabled(cell.is_enabled())
+
 
 func set_forward(forward: Vector3) -> void:
 	_location.set_forward(forward)
