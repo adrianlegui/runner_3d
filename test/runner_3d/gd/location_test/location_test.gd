@@ -39,7 +39,7 @@ func test_get_cell() -> void:
 
 func test_set_cell() -> void:
 	var location: Location = auto_free(Location.new()) as Location
-	var emitter: = monitor_signals(location) as Location
+	var emitter := monitor_signals(location) as Location
 	add_child(location)
 	var cell: Cell = auto_free(Cell.new()) as Cell
 	var cell_ref_spy := spy(auto_free(EntityReference.new())) as EntityReference
@@ -74,7 +74,7 @@ func test_get_forward() -> void:
 
 
 func test__on_game_event_all_entities_added() -> void:
-	var spy_location: = spy(auto_free(Location.new())) as Location
+	var spy_location := spy(auto_free(Location.new())) as Location
 	var mock_cell_ref: EntityReference = mock(EntityReference)
 	spy_location._cell_ref = mock_cell_ref
 	var cell: Cell = auto_free(Cell.new())
@@ -93,20 +93,20 @@ func test__add_extra_groups() -> void:
 func test__on_cell_enabled_changed() -> void:
 	var location: Location = auto_free(Location.new()) as Location
 	add_child(location)
-	var emitter: = monitor_signals(location) as Location
+	var emitter := monitor_signals(location) as Location
 	emitter._on_cell_enabled_changed()
 	await assert_signal(emitter).is_emitted("cell_enabled_changed")
 
 
 func test__disconnect_cell_signals() -> void:
 	var location: Location = auto_free(Location.new()) as Location
-	var spy_cell: = spy(auto_free(Cell.new())) as Cell
+	var spy_cell := spy(auto_free(Cell.new())) as Cell
 	location._disconnect_cell_signals(spy_cell)
 	verify(spy_cell, 1).enabled_changed.disconnect(location._on_cell_enabled_changed)
 
 
 func test__connect_cell_signals() -> void:
 	var location: Location = auto_free(Location.new()) as Location
-	var spy_cell: = spy(auto_free(Cell.new())) as Cell
+	var spy_cell := spy(auto_free(Cell.new())) as Cell
 	location._disconnect_cell_signals(spy_cell)
 	verify(spy_cell, 1).enabled_changed.connect(location._on_cell_enabled_changed)
