@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b173ao1b8u8kx"]
+
+[ext_resource type="Script" path="res://src/runner_3d/gd/spawn_point/spawn_point.gd" id="1_3ohqa"]
+[ext_resource type="PackedScene" uid="uid://7g5c4tdu4o14" path="res://src/runner_3d/gd/location/location.tscn" id="2_hxl4s"]
+
+[node name="SpawnPoint" type="Node" node_paths=PackedStringArray("_location")]
+script = ExtResource("1_3ohqa")
+_location = NodePath("Location")
+
+[node name="Location" parent="." instance=ExtResource("2_hxl4s")]
+process_mode = 4
