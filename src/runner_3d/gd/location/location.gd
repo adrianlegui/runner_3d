@@ -1,5 +1,8 @@
 class_name Location extends Data
 
+signal cell_changed(previous: Cell, new: Cell)
+signal cell_enabled_changed
+
 @export var _transform_3d: Transform3D = Transform3D.IDENTITY
 @export var _cell_ref: EntityReference
 
@@ -17,7 +20,21 @@ func get_cell() -> Cell:
 
 
 func set_cell(cell: Cell) -> void:
-	_cell_ref.set_entity(cell)
+	if cell == get_cell():
+		return
+
+	var previous: Cell = get_cell()
+	var new: Cell = cell
+
+	if cell == null:
+		_cell_ref.set_entity_id("")
+	else:
+		_cell_ref.set_entity(cell)
+
+	_disconnect_cell_signals(previous)
+	_connect_cell_signals(new)
+
+	cell_changed.emit(previous, new)
 
 
 func set_position(position: Vector3) -> void:
@@ -39,3 +56,27 @@ func get_forward() -> Vector3:
 
 func _add_extra_persistent_properties(persistent_properties: PackedStringArray) -> void:
 	persistent_properties.append_array(["_transform_3d", "_cell_ref"])
+
+
+func _connect_cell_signals(cell: Cell) -> void:
+	if cell == null:
+		return
+	cell.enabled_changed.connect(_on_cell_enabled_changed)
+
+
+func _disconnect_cell_signals(cell: Cell) -> void:
+	if cell == null:
+		return
+	cell.enabled_changed.disconnect(_on_cell_enabled_changed)
+
+
+func _on_cell_enabled_changed() -> void:
+	cell_enabled_changed.emit()
+
+
+func _add_extra_groups(groups: PackedStringArray) -> void:
+	groups.append(GameEvents.GROUP)
+
+
+func _on_game_event_all_entities_added() -> void:
+	_connect_cell_signals(get_cell())
