@@ -8,19 +8,19 @@ extends GdUnitTestSuite
 const __source = "res://src/runner_3d/gd/character/character.gd"
 const CHARACTER = preload("res://src/runner_3d/gd/character/character.tscn")
 const CELL = preload("res://src/runner_3d/gd/cell/cell.tscn")
-const V_APPROX: Vector3 = Vector3(0.00001, 0.00001, 0.00001)
+const VECTOR_APPROX: Vector3 = Vector3(0.00001, 0.00001, 0.00001)
 
 
 func test_get_position() -> void:
 	var character: Character = auto_free(CHARACTER.instantiate()) as Character
-	assert_vector(character.get_position()).is_equal_approx(Vector3.ZERO, V_APPROX)
+	assert_vector(character.get_position()).is_equal_approx(Vector3.ZERO, VECTOR_APPROX)
 
 
 func test_set_position() -> void:
 	var character: Character = auto_free(CHARACTER.instantiate()) as Character
 	var position: Vector3 = Vector3(1.0, 1.0, 1.0)
 	character.set_position(position)
-	assert_vector(character.get_position()).is_equal_approx(position, V_APPROX)
+	assert_vector(character.get_position()).is_equal_approx(position, VECTOR_APPROX)
 
 
 func test_get_cell() -> void:
@@ -55,56 +55,29 @@ func test__add_extra_persistent_properties() -> void:
 	var character: Character = auto_free(CHARACTER.instantiate()) as Character
 	var props: PackedStringArray = []
 	character._add_extra_persistent_properties(props)
-	assert_array(props).contains(["_transform_3d", "_cell_ref"])
-
-
-func test__connect_cell_signals() -> void:
-	var cell: Cell = auto_free(CELL.instantiate()) as Cell
-	ModManager.add_entity(cell)
-	var character: Character = auto_free(CHARACTER.instantiate()) as Character
-	ModManager.add_entity(character)
-	character.set_cell(cell)
-	assert_bool(cell.enabled_changed.is_connected(character._on_cell_enabled_changed)).is_true()
-
-
-func test__disconnect_cell_signals() -> void:
-	var cell: Cell = auto_free(CELL.instantiate()) as Cell
-	ModManager.add_entity(cell)
-	var character: Character = auto_free(CHARACTER.instantiate()) as Character
-	ModManager.add_entity(character)
-	character.set_cell(cell)
-	character.set_cell(null)
-	assert_bool(cell.enabled_changed.is_connected(character._on_cell_enabled_changed)).is_false()
+	assert_array(props).contains(["_location"])
 
 
 func test__on_enabled_changed_show() -> void:
-	var mock_cell_ref := mock(EntityReference) as EntityReference
-	var cell: Cell = auto_free(CELL.instantiate()) as Cell
-	ModManager.add_entity(cell)
-	cell.set_enabled(true)
-	var character: Character = auto_free(CHARACTER.instantiate()) as Character
-	ModManager.add_entity(character)
-	character.set_cell(cell)
-	var c_spy := spy(character) as Character
-	c_spy._cell_ref = mock_cell_ref
-	do_return(cell).on(mock_cell_ref).get_reference()
-	c_spy._on_enabled_changed()
-	verify(c_spy, 1)._show()
+	var character: Character = spy(auto_free(Character.new())) as Character
+	var location: Location = mock(Location)
+	character._location = location
+	var cell: Cell = mock(Cell) as Cell
+	do_return(cell).on(location).get_cell()
+	do_return(true).on(cell).is_enabled()
+	character._on_enabled_changed()
+	verify(character, 1)._show()
 
 
 func test__on_enabled_changed_hide() -> void:
-	var mock_cell_ref := mock(EntityReference) as EntityReference
-	var cell: Cell = auto_free(CELL.instantiate()) as Cell
-	ModManager.add_entity(cell)
-	cell.set_enabled(false)
-	var character: Character = auto_free(CHARACTER.instantiate()) as Character
-	ModManager.add_entity(character)
-	character.set_cell(cell)
-	var c_spy := spy(character) as Character
-	c_spy._cell_ref = mock_cell_ref
-	do_return(cell).on(mock_cell_ref).get_reference()
-	c_spy._on_enabled_changed()
-	verify(c_spy, 1)._hide()
+	var character: Character = spy(auto_free(Character.new())) as Character
+	var location: Location = mock(Location)
+	character._location = location
+	var cell: Cell = mock(Cell) as Cell
+	do_return(cell).on(location).get_cell()
+	do_return(false).on(cell).is_enabled()
+	character._on_enabled_changed()
+	verify(character, 1)._hide()
 
 
 func test__on_cell_enabled_changed() -> void:
@@ -114,4 +87,33 @@ func test__on_cell_enabled_changed() -> void:
 	ModManager.add_entity(character)
 	character.set_cell(cell)
 	cell.set_enabled(true)
+	assert_bool(character.is_enabled()).is_true()
+
+
+func test_set_forward() -> void:
+	var character: Character = auto_free(Character.new()) as Character
+	var location: Location = spy(auto_free(Location.new())) as Location
+	character._location = location
+	var forward: Vector3 = Vector3.MODEL_RIGHT
+	character.set_forward(forward)
+	verify(location, 1).set_forward(forward)
+
+
+func test_get_forward() -> void:
+	var character: Character = auto_free(Character.new()) as Character
+	var location: Location = mock(Location)
+	character._location = location
+	var forward: Vector3 = Vector3.FORWARD
+	do_return(forward).on(location).get_forward()
+	assert_vector(character.get_forward()).is_equal_approx(forward, VECTOR_APPROX)
+
+
+func test__on_location_cell_enabled_changed() -> void:
+	var character: Character = auto_free(Character.new()) as Character
+	var location: Location = mock(Location)
+	character._location = location
+	var cell: Cell = mock(Cell) as Cell
+	do_return(cell).on(location).get_cell()
+	do_return(true).on(cell).is_enabled()
+	character._on_location_cell_enabled_changed()
 	assert_bool(character.is_enabled()).is_true()
