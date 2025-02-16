@@ -1,11 +1,11 @@
 # GdUnit generated TestSuite
 class_name SpawnPointTest
 extends GdUnitTestSuite
-@warning_ignore('unused_parameter')
-@warning_ignore('return_value_discarded')
+@warning_ignore("unused_parameter")
+@warning_ignore("return_value_discarded")
 
 # TestSuite generated from
-const __source = 'res://src/runner_3d/gd/spawn_point/spawn_point.gd'
+const __source = "res://src/runner_3d/gd/spawn_point/spawn_point.gd"
 const VECTOR_APPROX: Vector3 = Vector3(0.00001, 0.00001, 0.00001)
 
 
