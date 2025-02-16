@@ -1,7 +1,7 @@
 ---
-title: configurar ubicación de Character usando SpawnPoint
+title: agregar signal a componente Location
 assignees: adrianlegui
 labels: enhancement
 milestone: "0.1"
 ---
-Character tiene que tener método move_to_spawn_point con parametro spawn_point. El método tiene que mover el character a la ubicación del SpawnPoint.
+Tiene que emitir señal cuando la celda es cambiada con parametros celda anterior y celda nueva. Tiene que emitir señal cuando la celda configurada es habilitada.
