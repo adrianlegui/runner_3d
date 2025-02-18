@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0f7r61b34tic"]
+
+[ext_resource type="PackedScene" uid="uid://b4dttkgjkmgar" path="res://addons/mod_manager/src/data/scene/scene.tscn" id="1_3b0ce"]
+
+[node name="SceneCamera3DWithHost" instance=ExtResource("1_3b0ce")]
+_scene_path = "res://src/runner_3d/gd/camera/camera_3d_with_host.tscn"
