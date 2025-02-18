@@ -1,11 +1,11 @@
 # GdUnit generated TestSuite
 class_name CameraTest
 extends GdUnitTestSuite
-@warning_ignore('unused_parameter')
-@warning_ignore('return_value_discarded')
+@warning_ignore("unused_parameter")
+@warning_ignore("return_value_discarded")
 
 # TestSuite generated from
-const __source = 'res://src/runner_3d/gd/camera/camera.gd'
+const __source = "res://src/runner_3d/gd/camera/camera.gd"
 
 
 func test_get_phantom_camera_3d() -> void:
@@ -25,7 +25,9 @@ func test_get_camera_3d_with_host() -> void:
 	camera._scene_camera_3d_with_host_ref = scene_camera_3d_with_host_ref
 	var scene: Scene = mock(Scene) as Scene
 	do_return(scene).on(scene_camera_3d_with_host_ref).get_reference()
-	var camera_3d_with_host: Camera3DWithHost = auto_free(Camera3DWithHost.new()) as Camera3DWithHost
+	var camera_3d_with_host: Camera3DWithHost = (
+		auto_free(Camera3DWithHost.new()) as Camera3DWithHost
+	)
 	do_return(camera_3d_with_host).on(scene).get_scene()
 	assert_object(camera.get_camera_3d_with_host()).is_same(camera_3d_with_host)
 
