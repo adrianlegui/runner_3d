@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://v062ktt04ym2"]
+
+[ext_resource type="Script" path="res://src/runner_3d/gd/camera/camera.gd" id="1_lynlh"]
+[ext_resource type="Script" path="res://addons/mod_manager/src/data/entity_reference.gd" id="2_uxqcd"]
+
+[node name="Camera" type="Node" node_paths=PackedStringArray("_scene_camera_3d_with_host_ref", "_scene_phantom_camera_3d_ref")]
+script = ExtResource("1_lynlh")
+_scene_camera_3d_with_host_ref = NodePath("SceneCamera3DWithHostRef")
+_scene_phantom_camera_3d_ref = NodePath("ScenePhantomCamera3DRef")
+
+[node name="SceneCamera3DWithHostRef" type="Node" parent="."]
+script = ExtResource("2_uxqcd")
+_entity_id = &"SceneCamera3DWithHost"
+
+[node name="ScenePhantomCamera3DRef" type="Node" parent="."]
+script = ExtResource("2_uxqcd")
+_entity_id = &"ScenePhanthomCamera3D"
