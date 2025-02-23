@@ -11,23 +11,26 @@ config_version=5
 [application]
 
 config/name="runner_3d"
+config/version="0.0.1"
 run/main_scene="res://src/runner_3d/gd/main/main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://src/runner_3d/resources/icons/linux/icon.png"
 
 [autoload]
 
-ModManager="*res://addons/mod_manager/src/mod_manager/mod_manager.tscn"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+ModManager="*res://addons/ente/src/gd/mod_manager/mod_manager.tscn"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/admob/plugin.cfg", "res://addons/gdUnit4/plugin.cfg", "res://addons/mod_manager/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/virtual_joystick/plugin.cfg")
+enabled=PackedStringArray("res://addons/admob/plugin.cfg", "res://addons/ente/plugin.cfg", "res://addons/gdUnit4/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/virtual_joystick/plugin.cfg")
 
-[mod_manager]
+[ente]
 
-mods_folder_path="res://src/runner_3d/mods/"
-game_id="RUNNER_3D"
+config/multi_mode/mods_folder_path="user://mods"
+config/game_id="RUNNER_3D"
+config/single_mode/active=true
+config/main_mod="res://src/runner_3d/main_mod/runner_3d.cfg"
 
 [rendering]
 

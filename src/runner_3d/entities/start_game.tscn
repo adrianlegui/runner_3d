@@ -3,3 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://b6x7p5q33l5lc" path="res://src/runner_3d/gd/one_shot/start_game/start_game.tscn" id="1_egrbo"]
 
 [node name="StartGame" instance=ExtResource("1_egrbo")]
+
+[node name="PlayerRef" parent="." index="0"]
+_entity_id = &"Player"
+
+[node name="GameStateRef" parent="." index="2"]
+_entity_id = &"GameState"

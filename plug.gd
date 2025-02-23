@@ -12,7 +12,7 @@ func _plugging():
 	)
 	plug("MarcoFazioRandom/Virtual-Joystick-Godot")
 	plug(
-		"adrianlegui/mod_manager",
-		{"exclude": ["addons/mod_manager/test", "addons/mod_manager/schema"], "tag": "v0.10.0"}
+		"adrianlegui/ente",
+		{"exclude": ["addons/ente/test", "addons/ente/schema", "addons/ente/docs"], "tag": "0.12.0"}
 	)
 	plug("poingstudios/godot-admob-plugin", {"tag": "v3.1.1"})

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b6x7p5q33l5lc"]
 
 [ext_resource type="Script" path="res://src/runner_3d/gd/one_shot/start_game/start_game.gd" id="1_7gnm7"]
-[ext_resource type="Script" path="res://addons/mod_manager/src/data/entity_reference.gd" id="2_ynaco"]
+[ext_resource type="Script" path="res://addons/ente/src/gd/data/entity_reference.gd" id="2_ynaco"]
 
 [node name="StartGame" type="Node" node_paths=PackedStringArray("_player_ref", "_start_spawn_point_ref", "_game_state_ref")]
 process_mode = 4

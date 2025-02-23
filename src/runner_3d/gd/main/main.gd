@@ -1,1 +1,1 @@
-extends "res://addons/mod_manager/src/main/main.gd"
+extends "res://addons/ente/src/gd/main/main.gd"

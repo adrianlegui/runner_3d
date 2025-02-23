@@ -3,7 +3,7 @@ extends GdUnitTestSuite
 @warning_ignore("unused_parameter")
 @warning_ignore("return_value_discarded")
 
-const RUNNER_3D_PATH = "res://src/runner_3d/mods/runner_3d.cfg"
+const RUNNER_3D_PATH = "res://src/runner_3d/main_mod/runner_3d.cfg"
 
 
 func test_runner_3d_cfg_is_valid() -> void:

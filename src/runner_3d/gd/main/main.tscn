@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://m002xa4k84"]
+[gd_scene load_steps=2 format=3 uid="uid://51wjbcm7yxp"]
 
-[ext_resource type="PackedScene" uid="uid://babxo821fqjmp" path="res://addons/mod_manager/src/main/main.tscn" id="1_hnyx8"]
 [ext_resource type="Script" path="res://src/runner_3d/gd/main/main.gd" id="2_ssvs5"]
 
-[node name="Main" instance=ExtResource("1_hnyx8")]
+[node name="Main" type="Node"]
 script = ExtResource("2_ssvs5")
