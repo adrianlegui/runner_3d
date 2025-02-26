@@ -15,7 +15,7 @@ func test_get_phantom_camera_3d() -> void:
 	var scene: Scene = mock(Scene) as Scene
 	do_return(scene).on(scene_phantom_camera_3d_ref).get_reference()
 	var phantom_camera_3d: PhantomCamera3D = auto_free(PhantomCamera3D.new()) as PhantomCamera3D
-	do_return(phantom_camera_3d).on(scene).get_scene()
+	do_return(phantom_camera_3d).on(scene).get_scene_instance()
 	assert_object(camera.get_phantom_camera_3d()).is_same(phantom_camera_3d)
 
 
@@ -28,7 +28,7 @@ func test_get_camera_3d_with_host() -> void:
 	var camera_3d_with_host: Camera3DWithHost = (
 		auto_free(Camera3DWithHost.new()) as Camera3DWithHost
 	)
-	do_return(camera_3d_with_host).on(scene).get_scene()
+	do_return(camera_3d_with_host).on(scene).get_scene_instance()
 	assert_object(camera.get_camera_3d_with_host()).is_same(camera_3d_with_host)
 
 
@@ -77,14 +77,14 @@ func test__add_cameras() -> void:
 	camera._scene_camera_3d_with_host_ref = scene_camera_3d_with_host_ref
 	do_return(scene_camera_3d_with_host).on(scene_camera_3d_with_host_ref).get_reference()
 	var camera_3d_with_host: Camera3DWithHost = auto_free(Camera3DWithHost.new())
-	do_return(camera_3d_with_host).on(scene_camera_3d_with_host).get_scene()
+	do_return(camera_3d_with_host).on(scene_camera_3d_with_host).get_scene_instance()
 
 	var scene_phantom_camera_3d: Scene = mock(Scene) as Scene
 	var scene_phantom_camera_3d_ref: EntityReference = mock(EntityReference) as EntityReference
 	camera._scene_phantom_camera_3d_ref = scene_phantom_camera_3d_ref
 	do_return(scene_phantom_camera_3d).on(scene_phantom_camera_3d_ref).get_reference()
 	var phantom_camera_3d: PhantomCamera3D = auto_free(PhantomCamera3D.new())
-	do_return(phantom_camera_3d).on(scene_phantom_camera_3d).get_scene()
+	do_return(phantom_camera_3d).on(scene_phantom_camera_3d).get_scene_instance()
 
 	camera._add_cameras()
 	assert_object(camera._camera_3d_with_host).is_same(camera_3d_with_host)

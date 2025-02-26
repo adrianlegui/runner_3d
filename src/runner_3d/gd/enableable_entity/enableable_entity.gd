@@ -32,7 +32,3 @@ func _on_enabled_changed() -> void:
 
 func _add_extra_persistent_properties(persistent_properties: PackedStringArray) -> void:
 	persistent_properties.append("_enabled")
-
-
-func _on_game_event_all_entities_added() -> void:
-	_on_enabled_changed()
