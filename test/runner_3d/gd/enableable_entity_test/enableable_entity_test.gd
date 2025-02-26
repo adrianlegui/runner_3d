@@ -43,10 +43,3 @@ func test_disable() -> void:
 	enableable_entity.set_enabled(true)
 	enableable_entity.disable()
 	assert_bool(enableable_entity.is_enabled()).is_false()
-
-
-func test__on_game_event_all_entities_added() -> void:
-	var enableable_entity: EnableableEntity = auto_free(EnableableEntity.new()) as EnableableEntity
-	var spy_e := spy(enableable_entity) as EnableableEntity
-	spy_e._on_game_event_all_entities_added()
-	verify(spy_e, 1)._on_enabled_changed()

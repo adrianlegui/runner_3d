@@ -5,9 +5,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_58j0g"]
 size = Vector3(50, 50, 50)
 
-[node name="PhysicalCell" type="NavigationRegion3D" node_paths=PackedStringArray("area_3d")]
+[node name="PhysicalCell" type="NavigationRegion3D" node_paths=PackedStringArray("_area_3d")]
 script = ExtResource("1_mbo00")
-area_3d = NodePath("Area3D")
+_area_3d = NodePath("Area3D")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 0

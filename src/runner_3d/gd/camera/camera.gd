@@ -9,12 +9,12 @@ var _phantom_camera_3d: PhantomCamera3D
 
 func get_phantom_camera_3d() -> PhantomCamera3D:
 	var scene: Scene = _scene_phantom_camera_3d_ref.get_reference()
-	return scene.get_scene()
+	return scene.get_scene_instance()
 
 
 func get_camera_3d_with_host() -> Camera3DWithHost:
 	var scene: Scene = _scene_camera_3d_with_host_ref.get_reference()
-	return scene.get_scene()
+	return scene.get_scene_instance()
 
 
 func _add_blocker_to_scenes() -> void:
