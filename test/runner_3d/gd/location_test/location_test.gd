@@ -110,3 +110,13 @@ func test__connect_cell_signals() -> void:
 	var spy_cell := spy(auto_free(Cell.new())) as Cell
 	location._disconnect_cell_signals(spy_cell)
 	verify(spy_cell, 1).enabled_changed.connect(location._on_cell_enabled_changed)
+
+
+func test_add_cell() -> void:
+	# remove this line and complete your test
+	assert_not_yet_implemented()
+
+
+func test_remove_cell() -> void:
+	# remove this line and complete your test
+	assert_not_yet_implemented()

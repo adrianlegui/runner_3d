@@ -3,12 +3,13 @@
 [ext_resource type="Script" path="res://src/runner_3d/gd/one_shot/start_game/start_game.gd" id="1_7gnm7"]
 [ext_resource type="Script" path="res://addons/ente/src/gd/data/entity_reference.gd" id="2_ynaco"]
 
-[node name="StartGame" type="Node" node_paths=PackedStringArray("_player_ref", "_start_spawn_point_ref", "_game_state_ref")]
+[node name="StartGame" type="Node" node_paths=PackedStringArray("_player_ref", "_start_spawn_point_ref", "_game_state_ref", "_camera_ref")]
 process_mode = 4
 script = ExtResource("1_7gnm7")
 _player_ref = NodePath("PlayerRef")
 _start_spawn_point_ref = NodePath("StartSpawnPointRef")
 _game_state_ref = NodePath("GameStateRef")
+_camera_ref = NodePath("CameraRef")
 
 [node name="PlayerRef" type="Node" parent="."]
 script = ExtResource("2_ynaco")
@@ -17,4 +18,7 @@ script = ExtResource("2_ynaco")
 script = ExtResource("2_ynaco")
 
 [node name="GameStateRef" type="Node" parent="."]
+script = ExtResource("2_ynaco")
+
+[node name="CameraRef" type="Node" parent="."]
 script = ExtResource("2_ynaco")

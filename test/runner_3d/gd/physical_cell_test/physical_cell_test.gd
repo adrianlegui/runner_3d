@@ -67,7 +67,7 @@ func test__on_area_3d_body_entered() -> void:
 	physical_cell._cell = cell
 	var node_3d := auto_free(Node3D.new()) as Node3D
 	physical_cell._on_area_3d_body_entered(node_3d)
-	verify(cell, 1).emit_body_entered_cell(node_3d)
+	verify(cell, 1).body_entered(node_3d)
 
 
 func test__on_area_3d_body_exited() -> void:
@@ -76,4 +76,4 @@ func test__on_area_3d_body_exited() -> void:
 	physical_cell._cell = cell
 	var node_3d := auto_free(Node3D.new()) as Node3D
 	physical_cell._on_area_3d_body_exited(node_3d)
-	verify(cell, 1).emit_body_exited_cell(node_3d)
+	verify(cell, 1).body_exited(node_3d)

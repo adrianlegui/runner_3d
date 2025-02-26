@@ -3,6 +3,7 @@ class_name StartGame extends OneShot
 @export var _player_ref: EntityReference
 @export var _start_spawn_point_ref: EntityReference
 @export var _game_state_ref: EntityReference
+@export var _camera_ref: EntityReference
 
 
 func _on_first_start() -> void:
@@ -19,7 +20,8 @@ func _on_first_start() -> void:
 		push_error("%s: start_spawn_point es nulo" % name)
 
 	if player != null:
-		player.move_to_spawn_point(start_spawn_point)
+		if start_spawn_point != null:
+			player.move_to_spawn_point(start_spawn_point)
 	else:
 		push_error("%s: player es nulo" % name)
 
@@ -37,6 +39,12 @@ func _on_first_start() -> void:
 	else:
 		push_error("%s: game_state es nulo." % name)
 
+	var camera: Camera = get_camera()
+	if camera == null:
+		push_error("%s: camera es nula" % name)
+	else:
+		camera.enable()
+
 
 func get_start_spawn_point() -> SpawnPoint:
 	return _start_spawn_point_ref.get_reference()
@@ -48,3 +56,7 @@ func get_player() -> Character:
 
 func get_game_state() -> GameState:
 	return _game_state_ref.get_reference()
+
+
+func get_camera() -> Camera:
+	return _camera_ref.get_reference()

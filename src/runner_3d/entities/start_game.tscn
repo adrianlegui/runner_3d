@@ -5,7 +5,10 @@
 [node name="StartGame" instance=ExtResource("1_egrbo")]
 
 [node name="PlayerRef" parent="." index="0"]
-_entity_id = &"Player"
+_entity_id = &"CharacterPlayer"
 
 [node name="GameStateRef" parent="." index="2"]
 _entity_id = &"GameState"
+
+[node name="CameraRef" parent="." index="3"]
+_entity_id = &"Camera"

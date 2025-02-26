@@ -12,6 +12,7 @@ var character: Character
 var cell: Cell
 var map: Map
 
+
 func before() -> void:
 	character = auto_free(Character.new())
 	ModManager.add_entity(character)
