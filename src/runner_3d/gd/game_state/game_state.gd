@@ -5,27 +5,27 @@ class_name GameState extends Entity
 @export var _cell_ref: EntityReference
 
 
-func get_current_map() -> Entity:
+func get_current_map() -> Map:
 	return _map_ref.get_reference()
 
 
-func set_current_map(map: Entity) -> void:
+func set_current_map(map: Map) -> void:
 	_map_ref.set_entity_id(map.name)
 
 
-func get_player() -> Entity:
+func get_player() -> Character:
 	return _player_ref.get_reference()
 
 
-func set_player(player: Entity) -> void:
+func set_player(player: Character) -> void:
 	_player_ref.set_entity_id(player.name)
 
 
-func get_current_cell() -> Entity:
+func get_current_cell() -> Cell:
 	return _cell_ref.get_reference()
 
 
-func set_current_cell(cell: Entity) -> void:
+func set_current_cell(cell: Cell) -> void:
 	_cell_ref.set_entity_id(cell.name)
 
 
