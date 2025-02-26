@@ -125,6 +125,33 @@ func test__remove_physical_cell() -> void:
 
 
 func test__on_game_event_all_entities_added() -> void:
+	var map_ref := mock(EntityReference) as EntityReference
+	var map := auto_free(Map.new()) as Map
+	do_return(map).on(map_ref).get_reference()
 	var spy_cell := spy(cell) as Cell
+	spy_cell._map_ref = map_ref
 	spy_cell._on_game_event_all_entities_added()
 	verify(spy_cell)._update_physical_cell()
+	verify(spy_cell)._connect_signals()
+
+
+func test__on_map_enabled_changed() -> void:
+	var map_ref := mock(EntityReference) as EntityReference
+	var map := mock(Map) as Map
+	cell._map_ref = map_ref
+	do_return(map).on(map_ref).get_reference()
+	do_return(false).on(map).is_enabled()
+	cell._on_map_enabled_changed()
+	assert_bool(cell.is_enabled()).is_false()
+	do_return(true).on(map).is_enabled()
+	cell._on_map_enabled_changed()
+	assert_bool(cell.is_enabled()).is_true()
+
+
+func test__connect_signals() -> void:
+	var map_ref := mock(EntityReference) as EntityReference
+	var map := auto_free(Map.new()) as Map
+	cell._map_ref = map_ref
+	do_return(map).on(map_ref).get_reference()
+	cell._connect_signals()
+	assert_bool(map.enabled_changed.is_connected(cell._on_map_enabled_changed)).is_true()
