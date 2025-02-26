@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://4ihw7jf6j7b2"]
+
+[ext_resource type="PackedScene" uid="uid://bxudr8vv83jrg" path="res://src/runner_3d/gd/character/character.tscn" id="1_laglx"]
+
+[node name="CharacterPlayer" instance=ExtResource("1_laglx")]
+
+[node name="ScenePhysicalCharacterRef" parent="." index="1"]
+_entity_id = &"ScenePhysicalCharacterPlayer"
+
+[editable path="Location"]

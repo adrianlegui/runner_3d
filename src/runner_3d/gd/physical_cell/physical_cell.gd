@@ -62,8 +62,8 @@ func _connect_signals() -> void:
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	_cell.emit_body_entered_cell(body)
+	_cell.body_entered(body)
 
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
-	_cell.emit_body_exited_cell(body)
+	_cell.body_exited(body)

@@ -6,6 +6,29 @@ signal cell_enabled_changed
 @export var _transform_3d: Transform3D = Transform3D.IDENTITY
 @export var _cell_ref: EntityReference
 
+var _cells: Array[Cell] = []
+
+
+func clear_cells() -> void:
+	_cells.clear()
+
+
+func add_cell(cell: Cell) -> void:
+	if cell in _cells:
+		return
+
+	_cells.append(cell)
+	set_cell(_cells[-1])
+
+
+func remove_cell(cell: Cell) -> void:
+	if cell not in _cells:
+		return
+
+	_cells.erase(cell)
+	if _cells.size() > 0:
+		set_cell(_cells[-1])
+
 
 func set_transform_3d(transform_3d: Transform3D) -> void:
 	_transform_3d = transform_3d
@@ -20,10 +43,10 @@ func get_cell() -> Cell:
 
 
 func set_cell(cell: Cell) -> void:
-	if cell == get_cell():
+	var previous: Cell = get_cell()
+	if cell == previous:
 		return
 
-	var previous: Cell = get_cell()
 	var new: Cell = cell
 
 	if cell == null:

@@ -92,7 +92,7 @@ func test__on_cell_enabled_changed() -> void:
 
 func test_set_forward() -> void:
 	var character: Character = auto_free(Character.new()) as Character
-	var location: Location = spy(auto_free(Location.new())) as Location
+	var location := mock(Location) as Location
 	character._location = location
 	var forward: Vector3 = Vector3.MODEL_RIGHT
 	character.set_forward(forward)
@@ -137,3 +137,28 @@ func test_move_to_spawn_point() -> void:
 	verify(character, 1).set_transform_3d(t)
 	verify(character, 1).set_cell(cell)
 	verify(character, 1).set_enabled(enabled)
+
+
+func test__show() -> void:
+	# remove this line and complete your test
+	assert_not_yet_implemented()
+
+
+func test__hide() -> void:
+	# remove this line and complete your test
+	assert_not_yet_implemented()
+
+
+func test_add_cell() -> void:
+	# remove this line and complete your test
+	assert_not_yet_implemented()
+
+
+func test_remove_cell() -> void:
+	# remove this line and complete your test
+	assert_not_yet_implemented()
+
+
+func test__get_physical_character_instance() -> void:
+	# remove this line and complete your test
+	assert_not_yet_implemented()

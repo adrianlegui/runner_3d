@@ -8,7 +8,7 @@ func _plugging():
 	)
 	plug(
 		"ramokz/phantom-camera",
-		{"tag": "v0.8.2.2", "exclude": ["addons/phantom_camera/examples"]},
+		{"tag": "v0.8.2.3", "exclude": ["addons/phantom_camera/examples"]},
 	)
 	plug("MarcoFazioRandom/Virtual-Joystick-Godot")
 	plug(

@@ -65,17 +65,17 @@ func test_set_grid_x() -> void:
 	assert_int(cell.get_grid_x()).is_equal(x)
 
 
-func test_emit_body_entered_cell() -> void:
+func test_body_entered() -> void:
 	var body: Node3D = auto_free(Node3D.new())
 	var monitor_cell := monitor_signals(cell) as Cell
-	monitor_cell.emit_body_entered_cell(body)
+	monitor_cell.body_entered(body)
 	await assert_signal(monitor_cell).wait_until(10).is_emitted("body_entered_cell")
 
 
-func test_emit_body_exited_cell() -> void:
+func test_body_exited() -> void:
 	var body: Node3D = auto_free(Node3D.new())
 	var monitor_cell := monitor_signals(cell) as Cell
-	monitor_cell.emit_body_exited_cell(body)
+	monitor_cell.body_exited(body)
 	await assert_signal(monitor_cell).wait_until(10).is_emitted("body_exited_cell")
 
 

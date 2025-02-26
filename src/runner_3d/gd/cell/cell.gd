@@ -53,11 +53,11 @@ func get_map() -> Map:
 	return _map_ref.get_reference()
 
 
-func emit_body_entered_cell(body: Node3D) -> void:
+func body_entered(body: Node3D) -> void:
 	body_entered_cell.emit(body)
 
 
-func emit_body_exited_cell(body: Node3D) -> void:
+func body_exited(body: Node3D) -> void:
 	body_exited_cell.emit(body)
 
 
