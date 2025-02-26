@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgts88mjfc5by"]
+
+[ext_resource type="Script" path="res://src/runner_3d/gd/physical_cell/physical_cell.gd" id="1_mbo00"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_58j0g"]
+size = Vector3(50, 50, 50)
+
+[node name="PhysicalCell" type="NavigationRegion3D" node_paths=PackedStringArray("area_3d")]
+script = ExtResource("1_mbo00")
+area_3d = NodePath("Area3D")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 25, 25)
+shape = SubResource("BoxShape3D_58j0g")
+metadata/_edit_lock_ = true

@@ -1,5 +1,10 @@
 class_name Cell extends EnableableEntity
 
+## Se emite cuando un nodo físico entra en la [Cell].
+signal body_entered_cell(body: Node3D)
+## Se emite cuando un nodo físico sale de la [Cell].
+signal body_exited_cell(body: Node3D)
+
 @export var _map_ref: EntityReference
 @export var _grid_x: int = 0
 @export var _grid_y: int = 0
@@ -40,3 +45,11 @@ func get_map() -> Map:
 
 func _add_extra_persistent_properties(persistent_properties: PackedStringArray) -> void:
 	persistent_properties.append_array(["_map_ref", "_grid_x", "_grid_y", "_grid_z"])
+
+
+func emit_body_entered_cell(body: Node3D) -> void:
+	body_entered_cell.emit(body)
+
+
+func emit_body_exited_cell(body: Node3D) -> void:
+	body_exited_cell.emit(body)
