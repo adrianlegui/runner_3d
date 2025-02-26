@@ -6,6 +6,12 @@ signal body_entered_cell(body: Node3D)
 ## Se emite cuando un nodo físico sale de la [Cell].
 signal body_exited_cell(body: Node3D)
 
+const VAR_PHYSICAL_CELL_FILE_PATH: String = "_physical_cell_file_path"
+const VAR_GRID_X: String = "_grid_x"
+const VAR_GRID_Y: String = "_grid_y"
+const VAR_GRID_Z: String = "_grid_z"
+const VAR_MAP_REF: String = "_map_ref"
+
 @export_file("*.tscn") var _physical_cell_file_path: String = ""
 @export var _map_ref: EntityReference
 @export var _grid_x: int = 0
@@ -97,3 +103,18 @@ func _remove_physical_cell() -> void:
 
 func _on_game_event_all_entities_added() -> void:
 	_update_physical_cell()
+	_connect_signals()
+
+
+func _on_map_enabled_changed() -> void:
+	var map: Map = get_map()
+	if map == null:
+		return
+	set_enabled(map.is_enabled())
+
+
+func _connect_signals() -> void:
+	var map: Map = get_map()
+	if map == null:
+		return
+	map.enabled_changed.connect(_on_map_enabled_changed)
