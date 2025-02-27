@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dk7eh4vvluwsf"]
+[gd_scene load_steps=5 format=3 uid="uid://dk7eh4vvluwsf"]
 
 [ext_resource type="PackedScene" uid="uid://canhgoiyslefo" path="res://src/runner_3d/gd/map/smoke_tests/physical_cell_0.tscn" id="1_1ospx"]
 [ext_resource type="Script" path="res://src/runner_3d/gd/map_creator.gd" id="1_f461v"]
 [ext_resource type="PackedScene" uid="uid://b3oipmmvgw1dm" path="res://src/runner_3d/gd/map/smoke_tests/physical_cell_1.tscn" id="2_5rss2"]
+[ext_resource type="PackedScene" uid="uid://ckj7b05jli48q" path="res://src/runner_3d/gd/spawn_point_3d/spawn_point_3d.tscn" id="3_71cr0"]
 
 [node name="MapCreator" type="Node"]
 script = ExtResource("1_f461v")
@@ -10,6 +11,9 @@ cfg_path = "res://src/runner_3d/main_mod/runner_3d.cfg"
 map_name = "SmokeTests"
 
 [node name="PhysicalCell0" parent="." instance=ExtResource("1_1ospx")]
+
+[node name="SpawnPoint3D" parent="PhysicalCell0" instance=ExtResource("3_71cr0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 1, 2)
 
 [node name="PhysicalCell1" parent="." instance=ExtResource("2_5rss2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)

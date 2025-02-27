@@ -2,6 +2,7 @@
 class_name MapCreator extends Node
 
 const PREFIX: String = "Map"
+const SPAWN_POINT_SCENE_FILE_PATH: String = "res://src/runner_3d/gd/spawn_point/spawn_point.tscn"
 const CELL_SCENE_FILE_PATH: String = "res://src/runner_3d/gd/cell/cell.tscn"
 const MAP = preload("res://src/runner_3d/gd/map/map.tscn")
 
@@ -59,6 +60,10 @@ func _commit_changes() -> void:
 			physical_cell.y,
 			physical_cell.z
 		)
+		var spawn_points_3d := _get_spawn_point_3d(physical_cell)
+		for node: SpawnPoint3D in spawn_points_3d:
+			var spawn_id: String = "%s%s" % [cell_id, node.name.replace("3D", "")]
+			entities[spawn_id] = _create_spawn_point_data(node.transform, cell_id)
 
 	map.queue_free()
 
@@ -84,6 +89,15 @@ func _get_physical_cells() -> Array[PhysicalCell]:
 	return physical_cells
 
 
+func _get_spawn_point_3d(physical_cell: PhysicalCell) -> Array[SpawnPoint3D]:
+	var spawn_points: Array[SpawnPoint3D] = []
+	for child in physical_cell.get_children():
+		var s: SpawnPoint3D = child as SpawnPoint3D
+		if s != null:
+			spawn_points.append(s)
+	return spawn_points
+
+
 func _create_cell_data(
 	cell_scene_file_path: String,
 	map_id: String,
@@ -101,6 +115,24 @@ func _create_cell_data(
 			Cell.VAR_GRID_Y: y,
 			Cell.VAR_GRID_Z: z,
 			Cell.VAR_MAP_REF: {Data.KEY_PROPERTIES: {"_entity_id": map_id}}
+		}
+	}
+	return data
+
+
+func _create_spawn_point_data(transform_3d: Transform3D, cell_id: String) -> Dictionary:
+	var data: Dictionary = {
+		Data.KEY_SCENE_FILE_PATH: SPAWN_POINT_SCENE_FILE_PATH,
+		Data.KEY_PROPERTIES:
+		{
+			"_location":
+			{
+				Data.KEY_PROPERTIES:
+				{
+					"_transform_3d": transform_3d,
+					"_cell_ref": {Data.KEY_PROPERTIES: {"_entity_id": cell_id}}
+				}
+			}
 		}
 	}
 	return data

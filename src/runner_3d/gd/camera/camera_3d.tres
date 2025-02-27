@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_d40hi")
-cull_mask = 1048575
+cull_mask = 524287
 h_offset = 0.0
 v_offset = 0.0
 projection = 0
