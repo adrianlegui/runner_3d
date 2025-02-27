@@ -34,6 +34,7 @@ config/main_mod="res://src/runner_3d/main_mod/runner_3d.cfg"
 
 [layer_names]
 
+3d_render/layer_20="EDITOR_ONLY"
 3d_physics/layer_2="STATIC"
 3d_physics/layer_3="DINAMIC"
 
