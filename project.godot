@@ -21,6 +21,14 @@ config/icon="res://src/runner_3d/resources/icons/linux/icon.png"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 ModManager="*res://addons/ente/src/gd/mod_manager/mod_manager.tscn"
 
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=1280
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_width"
+window/handheld/orientation=1
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/admob/plugin.cfg", "res://addons/ente/plugin.cfg", "res://addons/gdUnit4/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/virtual_joystick/plugin.cfg")
@@ -37,6 +45,7 @@ config/main_mod="res://src/runner_3d/main_mod/runner_3d.cfg"
 3d_render/layer_20="EDITOR_ONLY"
 3d_physics/layer_2="STATIC"
 3d_physics/layer_3="DINAMIC"
+3d_physics/layer_4="OBSTACLE"
 
 [rendering]
 
