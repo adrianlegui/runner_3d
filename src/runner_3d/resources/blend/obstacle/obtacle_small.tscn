@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp6kdtt6ml18g"]
+
+[ext_resource type="ArrayMesh" uid="uid://pnt05ytv3k0b" path="res://src/runner_3d/resources/blend/obstacle/obstacle_small.mesh" id="1_jrube"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tyvrt"]
+size = Vector3(0.5, 0.5, 1)
+
+[node name="ObtacleSmall" type="StaticBody3D"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_tyvrt")
+
+[node name="ObstacleSmall" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_jrube")

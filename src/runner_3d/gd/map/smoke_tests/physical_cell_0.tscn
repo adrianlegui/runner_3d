@@ -1,14 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://canhgoiyslefo"]
+[gd_scene load_steps=8 format=3 uid="uid://canhgoiyslefo"]
 
 [ext_resource type="PackedScene" uid="uid://dgts88mjfc5by" path="res://src/runner_3d/gd/physical_cell/physical_cell.tscn" id="1_8ihqu"]
 [ext_resource type="PackedScene" uid="uid://cl8kc8atvd4pl" path="res://src/runner_3d/gd/map/smoke_tests/ground.tscn" id="2_cudtc"]
+[ext_resource type="PackedScene" uid="uid://cttxt4hlcvfvk" path="res://src/runner_3d/resources/blend/obstacle/obtacle_large.tscn" id="3_gvn7u"]
+[ext_resource type="PackedScene" uid="uid://cdfx08ocjnocm" path="res://src/runner_3d/resources/blend/obstacle/obtacle_medium.tscn" id="4_dcvyr"]
+[ext_resource type="PackedScene" uid="uid://dp6kdtt6ml18g" path="res://src/runner_3d/resources/blend/obstacle/obtacle_small.tscn" id="5_6hxrw"]
+[ext_resource type="PackedScene" uid="uid://ckytt1r3vhyay" path="res://src/runner_3d/resources/blend/obstacle/obtacle_tall.tscn" id="6_2yhir"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_w3a5b"]
 vertices = PackedVector3Array(0.5, 1.5, 0.5, 0.5, 1.5, 3.5, 49.5, 1.5, 3.5, 49.5, 1.5, 0.5)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_parsed_geometry_type = 1
+geometry_collision_mask = 4294967283
 filter_baking_aabb = AABB(0, 0, 0, 50, 50, 50)
 
 [node name="PhysicalCell0" instance=ExtResource("1_8ihqu")]
 navigation_mesh = SubResource("NavigationMesh_w3a5b")
 
 [node name="Ground" parent="." index="1" instance=ExtResource("2_cudtc")]
+
+[node name="ObtacleLarge" parent="." index="2" instance=ExtResource("3_gvn7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 1.25, 2)
+
+[node name="ObtacleMedium" parent="." index="3" instance=ExtResource("4_dcvyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 1.25, 2)
+
+[node name="ObtacleSmall" parent="." index="4" instance=ExtResource("5_6hxrw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.25, 2)
+
+[node name="ObtacleSmall2" parent="." index="5" instance=ExtResource("5_6hxrw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1.25, 2)
+
+[node name="ObtacleSmall3" parent="." index="6" instance=ExtResource("5_6hxrw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 1.25, 2)
+
+[node name="ObtacleTall" parent="." index="7" instance=ExtResource("6_2yhir")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1.5, 2)
