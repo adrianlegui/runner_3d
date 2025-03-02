@@ -29,7 +29,6 @@ func test__on_first_start() -> void:
 
 	var game_state: GameState = spy(auto_free(GameState.new())) as GameState
 	game_state._cell_ref = mock(EntityReference)
-	game_state._map_ref = mock(EntityReference)
 	game_state._player_ref = mock(EntityReference)
 	do_return(game_state).on(game_state_ref).get_reference()
 

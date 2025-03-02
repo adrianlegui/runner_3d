@@ -6,6 +6,10 @@ class_name Character extends EnableableEntity
 var _physical_character: PhysicalCharacter
 
 
+func get_physical_character() -> PhysicalCharacter:
+	return _physical_character
+
+
 func add_cell(cell: Cell) -> void:
 	_location.add_cell(cell)
 
