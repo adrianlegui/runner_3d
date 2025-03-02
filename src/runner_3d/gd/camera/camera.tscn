@@ -4,10 +4,11 @@
 [ext_resource type="Script" path="res://addons/ente/src/gd/data/entity_reference.gd" id="2_uxqcd"]
 [ext_resource type="Environment" uid="uid://dkjfcq27mb0ey" path="res://src/runner_3d/gd/camera/environment.tres" id="3_7p82s"]
 
-[node name="Camera" type="Node" node_paths=PackedStringArray("_scene_camera_3d_with_host_ref", "_scene_phantom_camera_3d_ref")]
+[node name="Camera" type="Node" node_paths=PackedStringArray("_scene_camera_3d_with_host_ref", "_scene_phantom_camera_3d_ref", "_follow_target_ref")]
 script = ExtResource("1_lynlh")
 _scene_camera_3d_with_host_ref = NodePath("SceneCamera3DWithHostRef")
 _scene_phantom_camera_3d_ref = NodePath("ScenePhantomCamera3DRef")
+_follow_target_ref = NodePath("FollowTargetRef")
 
 [node name="SceneCamera3DWithHostRef" type="Node" parent="."]
 script = ExtResource("2_uxqcd")
@@ -21,3 +22,6 @@ _persistent_entity_id = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("3_7p82s")
+
+[node name="FollowTargetRef" type="Node" parent="."]
+script = ExtResource("2_uxqcd")

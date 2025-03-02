@@ -12,10 +12,8 @@ func _on_first_start() -> void:
 	var start_spawn_point: SpawnPoint = get_start_spawn_point()
 
 	var start_cell: Cell
-	var start_map: Map
 	if start_spawn_point != null:
 		start_cell = start_spawn_point.get_cell()
-		start_map = start_cell.get_map()
 	else:
 		push_error("%s: start_spawn_point es nulo" % name)
 
@@ -32,17 +30,15 @@ func _on_first_start() -> void:
 			game_state.set_current_cell(start_cell)
 		else:
 			push_error("%s: start_cell es nulo" % name)
-		if start_map != null:
-			game_state.set_current_map(start_map)
-		else:
-			push_error("%s: start_map es nulo" % name)
 	else:
 		push_error("%s: game_state es nulo." % name)
 
+	await get_tree().process_frame
 	var camera: Camera = get_camera()
 	if camera == null:
 		push_error("%s: camera es nula" % name)
 	else:
+		camera.set_follow_target(player)
 		camera.enable()
 
 

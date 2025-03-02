@@ -26,8 +26,7 @@ func remove_cell(cell: Cell) -> void:
 		return
 
 	_cells.erase(cell)
-	if _cells.size() > 0:
-		set_cell(_cells[-1])
+	set_cell(_cells[-1] if _cells.size() > 0 else null)
 
 
 func set_transform_3d(transform_3d: Transform3D) -> void:
@@ -39,7 +38,7 @@ func get_transform_3d() -> Transform3D:
 
 
 func get_cell() -> Cell:
-	return _cell_ref.get_reference()
+	return null if _cell_ref.get_entity_id().is_empty() else _cell_ref.get_reference()
 
 
 func set_cell(cell: Cell) -> void:

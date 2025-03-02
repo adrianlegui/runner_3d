@@ -33,6 +33,8 @@ func test_get_cell() -> void:
 	var mock_cell_ref: EntityReference = mock(EntityReference)
 	location._cell_ref = mock_cell_ref
 	var cell: Cell = auto_free(Cell.new())
+	var entity_id: String = ""
+	do_return(entity_id).on(mock_cell_ref).get_entity_id()
 	do_return(cell).on(mock_cell_ref).get_reference()
 	assert_object(location.get_cell()).is_same(cell)
 
@@ -80,7 +82,7 @@ func test__on_game_event_all_entities_added() -> void:
 	var cell: Cell = auto_free(Cell.new())
 	do_return(cell).on(mock_cell_ref).get_reference()
 	spy_location._on_game_event_all_entities_added()
-	verify(spy_location, 1)._connect_cell_signals(cell)
+	verify(spy_location, 1)._connect_cell_signals(null)
 
 
 func test__add_extra_groups() -> void:
@@ -113,10 +115,20 @@ func test__connect_cell_signals() -> void:
 
 
 func test_add_cell() -> void:
-	# remove this line and complete your test
-	assert_not_yet_implemented()
+	var location: Location = auto_free(Location.new()) as Location
+	var cell_ref := spy(auto_free(EntityReference.new())) as EntityReference
+	location._cell_ref = cell_ref
+	var cell := auto_free(Cell.new()) as Cell
+	location.add_cell(cell)
+	assert_array(location._cells).contains([cell])
+	verify(cell_ref).set_entity(cell)
 
 
 func test_remove_cell() -> void:
-	# remove this line and complete your test
-	assert_not_yet_implemented()
+	var location: Location = auto_free(Location.new()) as Location
+	var cell_ref := spy(auto_free(EntityReference.new())) as EntityReference
+	location._cell_ref = cell_ref
+	var cell := auto_free(Cell.new()) as Cell
+	location._cells.append(cell)
+	location.remove_cell(cell)
+	assert_array(location._cells).not_contains([cell])

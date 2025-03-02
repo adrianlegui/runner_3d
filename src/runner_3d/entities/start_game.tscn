@@ -7,6 +7,9 @@
 [node name="PlayerRef" parent="." index="0"]
 _entity_id = &"CharacterPlayer"
 
+[node name="StartSpawnPointRef" parent="." index="1"]
+_entity_id = &"MapSmokeTestsCell0SpawnPoint"
+
 [node name="GameStateRef" parent="." index="2"]
 _entity_id = &"GameState"
 
