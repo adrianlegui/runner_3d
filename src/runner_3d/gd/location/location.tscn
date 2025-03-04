@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://7g5c4tdu4o14"]
 
-[ext_resource type="Script" path="res://src/runner_3d/gd/location/location.gd" id="1_ca2o1"]
-[ext_resource type="Script" path="res://addons/ente/src/gd/data/entity_reference.gd" id="2_65feo"]
+[ext_resource type="Script" uid="uid://dux4785s48qms" path="res://src/runner_3d/gd/location/location.gd" id="1_ca2o1"]
+[ext_resource type="Script" uid="uid://bxrweafavbxxs" path="res://addons/ente/src/gd/data/entity_reference.gd" id="2_65feo"]
 
 [node name="Location" type="Node" node_paths=PackedStringArray("_cell_ref")]
 script = ExtResource("1_ca2o1")

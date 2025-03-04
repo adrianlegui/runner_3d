@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://v062ktt04ym2"]
 
-[ext_resource type="Script" path="res://src/runner_3d/gd/camera/camera.gd" id="1_lynlh"]
-[ext_resource type="Script" path="res://addons/ente/src/gd/data/entity_reference.gd" id="2_uxqcd"]
+[ext_resource type="Script" uid="uid://dxw0gt47ltm10" path="res://src/runner_3d/gd/camera/camera.gd" id="1_lynlh"]
+[ext_resource type="Script" uid="uid://bxrweafavbxxs" path="res://addons/ente/src/gd/data/entity_reference.gd" id="2_uxqcd"]
 [ext_resource type="Environment" uid="uid://dkjfcq27mb0ey" path="res://src/runner_3d/gd/camera/environment.tres" id="3_7p82s"]
 
 [node name="Camera" type="Node" node_paths=PackedStringArray("_scene_camera_3d_with_host_ref", "_scene_phantom_camera_3d_ref", "_follow_target_ref")]

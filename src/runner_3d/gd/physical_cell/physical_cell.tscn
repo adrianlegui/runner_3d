@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dgts88mjfc5by"]
 
-[ext_resource type="Script" path="res://src/runner_3d/gd/physical_cell/physical_cell.gd" id="1_mbo00"]
+[ext_resource type="Script" uid="uid://qd0fuoeqlnw6" path="res://src/runner_3d/gd/physical_cell/physical_cell.gd" id="1_mbo00"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_58j0g"]
 size = Vector3(50, 50, 50)
