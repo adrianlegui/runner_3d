@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bxwefu4togu0b"]
+
+[node name="Camera3D" type="Marker3D" groups=["ENTE_PERSISTENT"]]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6, 21)

@@ -1,0 +1,123 @@
+[gd_scene load_steps=13 format=3 uid="uid://ff7xt8p8n8jd"]
+
+[ext_resource type="Script" uid="uid://bcyrlqvr7bcmw" path="res://src/runner_3d/gd/runner/runner.gd" id="1_hunjd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1tmio"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_hunjd"]
+sky_material = SubResource("ProceduralSkyMaterial_1tmio")
+
+[sub_resource type="Environment" id="Environment_lyrjc"]
+background_mode = 2
+sky = SubResource("Sky_hunjd")
+
+[sub_resource type="Animation" id="Animation_hunjd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody3D/MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.261799)]
+}
+
+[sub_resource type="Animation" id="Animation_1tmio"]
+resource_name = "Running"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody3D/MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.261799), Vector3(0, 0, -0.261799), Vector3(0, 0, 0.261799)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lyrjc"]
+_data = {
+&"RESET": SubResource("Animation_hunjd"),
+&"Running": SubResource("Animation_1tmio")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1tmio"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1tmio"]
+material = SubResource("StandardMaterial3D_1tmio")
+height = 1.5
+radial_segments = 8
+rings = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hunjd"]
+size = Vector3(1, 1.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1tmio"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lyrjc"]
+size = Vector3(2, 10, 10)
+
+[node name="Runner" type="StaticBody3D" node_paths=PackedStringArray("_character_body_3d") groups=["ENTE_PERSISTENT"]]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_hunjd")
+jump_impulse = 20.0
+gravity_factor = 0.05
+_character_body_3d = NodePath("CharacterBody3D")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lyrjc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lyrjc")
+}
+autoplay = "Running"
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 0, 0.772029, 0)
+mesh = SubResource("CylinderMesh_1tmio")
+skeleton = NodePath("")
+
+[node name="ObstacleDetector" type="Area3D" parent="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CharacterBody3D/ObstacleDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("BoxShape3D_hunjd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("BoxShape3D_hunjd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_1tmio")
+
+[node name="ObstacleDestroyer" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ObstacleDestroyer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.5, 0)
+shape = SubResource("BoxShape3D_lyrjc")
+
+[connection signal="area_entered" from="CharacterBody3D/ObstacleDetector" to="." method="_on_obstacle_detector_area_entered"]
+[connection signal="area_entered" from="ObstacleDestroyer" to="." method="_on_obstacle_destroyer_area_entered"]

@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3nhjpbmn85g7"]
-
-[ext_resource type="PackedScene" uid="uid://b4dttkgjkmgar" path="res://addons/ente/src/gd/data/scene/scene.tscn" id="1_u77e7"]
-
-[node name="ScenePhysicalCharacterPlayer" instance=ExtResource("1_u77e7")]
-_scene_path = "res://src/runner_3d/gd/physical_character/player/physical_character_player.tscn"
-
-[node name="Unloaded" parent="." index="0"]
-_default = false

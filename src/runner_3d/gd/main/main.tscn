@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://51wjbcm7yxp"]
+[gd_scene load_steps=2 format=3 uid="uid://cy0pmtrr27pak"]
 
-[ext_resource type="Script" uid="uid://tuvmcit201mw" path="res://src/runner_3d/gd/main/main.gd" id="2_ssvs5"]
+[ext_resource type="Script" uid="uid://fy60s6xr7fno" path="res://src/runner_3d/gd/main/main.gd" id="1_cim77"]
 
 [node name="Main" type="Node"]
-script = ExtResource("2_ssvs5")
+script = ExtResource("1_cim77")

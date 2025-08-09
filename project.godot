@@ -12,26 +12,28 @@ config_version=5
 
 config/name="runner_3d"
 config/version="0.0.1"
-run/main_scene="res://src/runner_3d/gd/main/main.tscn"
+run/main_scene="uid://cy0pmtrr27pak"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://src/runner_3d/resources/icons/linux/icon.png"
 
 [autoload]
 
-PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
-ModManager="*res://addons/ente/src/gd/mod_manager/mod_manager.tscn"
+EnteModManager="*res://addons/ente/src/gd/mod_manager.tscn"
 
 [display]
 
 window/size/viewport_width=720
 window/size/viewport_height=1280
 window/stretch/mode="canvas_items"
-window/stretch/aspect="keep_width"
 window/handheld/orientation=1
+
+[editor]
+
+run/main_run_args="++ --not-encrypted-savedgame"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/admob/plugin.cfg", "res://addons/ente/plugin.cfg", "res://addons/gdUnit4/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/virtual_joystick/plugin.cfg")
+enabled=PackedStringArray("res://addons/ente/plugin.cfg", "res://addons/virtual_joystick/plugin.cfg")
 
 [ente]
 
@@ -40,15 +42,28 @@ config/game_id="RUNNER_3D"
 config/single_mode/active=true
 config/main_mod="res://src/runner_3d/main_mod/runner_3d.cfg"
 
+[global_group]
+
+ENTE_PERSISTENT=""
+
+[input]
+
+Jump={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
+]
+}
+
 [layer_names]
 
 3d_render/layer_20="EDITOR_ONLY"
-3d_physics/layer_2="STATIC"
-3d_physics/layer_3="DINAMIC"
+3d_physics/layer_2="RUNNER"
+3d_physics/layer_3="GROUND"
 3d_physics/layer_4="OBSTACLE"
 
 [physics]
 
+3d/physics_engine="Jolt Physics"
 common/physics_interpolation=true
 
 [rendering]

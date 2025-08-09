@@ -1,1 +1,0 @@
-class_name Camera3DWithHost extends Camera3D

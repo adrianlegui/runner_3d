@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bneuttewkyua"]
-
-[ext_resource type="PackedScene" uid="uid://v062ktt04ym2" path="res://src/runner_3d/gd/camera/camera.tscn" id="1_ix8g5"]
-
-[node name="Camera" instance=ExtResource("1_ix8g5")]

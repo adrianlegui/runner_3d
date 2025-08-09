@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ty3wxld3ujpa"]
-
-[ext_resource type="PackedScene" uid="uid://b4dttkgjkmgar" path="res://addons/ente/src/gd/data/scene/scene.tscn" id="1_1xxl7"]
-
-[node name="ScenePhantomCamera3D" instance=ExtResource("1_1xxl7")]
-_scene_path = "res://src/runner_3d/gd/camera/phantom_camera_3d.tscn"
