@@ -39,8 +39,8 @@ enabled=PackedStringArray("res://addons/ente/plugin.cfg", "res://addons/virtual_
 
 config/multi_mode/mods_folder_path="user://mods"
 config/game_id="RUNNER_3D"
-config/single_mode/active=true
 config/main_mod="res://src/runner_3d/main_mod/runner_3d.cfg"
+config/single_mode/active=false
 
 [global_group]
 
