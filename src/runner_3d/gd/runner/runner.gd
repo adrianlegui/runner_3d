@@ -1,6 +1,5 @@
 extends StaticBody3D
 
-
 const KEY_POSITION: String = "position"
 const KEY_VELOCITY: String = "velocity"
 
@@ -55,7 +54,7 @@ func _delete_savegame() -> void:
 
 
 func ente_get_data() -> Dictionary:
-	var data: = {}
+	var data := {}
 	var ch: CharacterBody3D = _character_body_3d
 	data[KEY_POSITION] = ch.position
 	data[KEY_VELOCITY] = ch.velocity

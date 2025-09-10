@@ -1,6 +1,5 @@
 extends Node
 
-
 const OBSTACLE = preload("res://src/runner_3d/gd/obstacle/obstacle.tscn")
 const KEY_TIME: String = "_time"
 const KEY_NEXT_TIME: String = "_next_time"
@@ -14,6 +13,7 @@ var _next_time: float = 0.0
 var _rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 @onready var _scene_tree: SceneTree = get_tree()
+
 
 func _process(delta: float) -> void:
 	_time += delta
@@ -35,7 +35,7 @@ func ente_set_data(data: Dictionary) -> void:
 
 
 func ente_get_data() -> Dictionary:
-	var data: = {}
+	var data := {}
 	data[KEY_NEXT_TIME] = _next_time
 	data[KEY_TIME] = _time
 	return data
