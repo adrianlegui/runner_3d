@@ -2,6 +2,7 @@ extends Node
 
 
 func _ready() -> void:
+	get_tree().paused = true
 	EnteModManager.start()
 	await EnteModManager.finished
 
@@ -20,4 +21,5 @@ func _ready() -> void:
 		EnteModManager.start_game()
 
 	await EnteModManager.started_game
+	get_tree().paused = false
 	queue_free()
